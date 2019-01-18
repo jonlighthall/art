@@ -1,19 +1,45 @@
-#LaTeX
+## LaTeX
+## Core latex/pdflatex auxiliary files:
 *.aux
+*.lof
 *.log
+*.lot
 *.out
-*.pdf
-*.synctex
-*.dvi
+*.toc
 
-#TeXnicCenter
+## Project files:
 *.tcp
 *.tps
+*.texnicle
+*.texnicle.backup
 
-#Emacs
+## Intermediate documents:
+*.dvi
+*-converted-to.*
+
+## Output
+# these rules might exclude image files for figures etc.
+# *.ps
+# *.eps
+# *.pdf
+
+## Bibliography auxiliary files (bibtex/biblatex/biber):
+*.bbl
+*.blg
+
+## Build tool auxiliary files:
+*.synctex
+*.synctex(busy)
+*.synctex.gz
+*.synctex.gz(busy)
+
+# elsarticle (documentclass of Elsevier journals)
+*.spl
+
+## Emacs
 *~
 \#*#
 
-#Git
+##Git 
 *.~*~
 **/.git
