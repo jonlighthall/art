@@ -1,5 +1,5 @@
 # art
-Article template compatilble with Overleaf.
+Article template compatible with Overleaf.
 Includes TexnicCenter project file.
 
 ## Installation
