@@ -206,27 +206,33 @@ citecolor=black,               %makes citation links black (instead of green)
 \newdateformat{photodate}{\shortmonthname[\THEMONTH]~\THEYEAR}
 \newdateformat{longusdate}{%standard long date format
 \dayofweekname{\THEDAY}{\THEMONTH}{\THEYEAR}, \monthname[\THEMONTH] \ordinal{DAY}, \THEYEAR}
-\newdateformat{shortusdate}{%standard long date format
+\newdateformat{shortusdate}{%short date format
 \shortdayofweekname{\THEDAY}{\THEMONTH}{\THEYEAR}, \shortmonthname[\THEMONTH] \ordinal{DAY}, \THEYEAR}
 
 %  Time zone definitions, for the command \timezone.
 \makeatletter
-%\@namedef{timezone-0400}{EDT}
-%\@namedef{timezone-0500}{CDT}
-%\@namedef{timezone-0600}{MDT}
-%\@namedef{timezone-0700}{PDT}
-
-\@namedef{timezone-0500}{EST}
-\@namedef{timezone-0600}{CST}
-\@namedef{timezone-0700}{MST}
-\@namedef{timezone-0800}{PST}
+\newif\ifdst
+% set daylight saving time
+\dstfalse
+% set time zone names
+\ifdst
+  \@namedef{timezone-0400}{EDT}
+  \@namedef{timezone-0500}{CDT}
+  \@namedef{timezone-0600}{MDT}
+  \@namedef{timezone-0700}{PDT}
+\else
+  \@namedef{timezone-0500}{EST}
+  \@namedef{timezone-0600}{CST}
+  \@namedef{timezone-0700}{MST}
+  \@namedef{timezone-0800}{PST}
+\fi
 
 \def\grabtimezone #1#2#3#4#5#6#7#8#9{\grabtimezoneB}
 \def\grabtimezoneB #1#2#3#4#5#6#7{\grabtimezoneC}
 \def\grabtimezoneC #1#2'#3'{%
-\@ifundefined{timezone#1#2#3}
-{No timezone for `#1#2#3'}
-{\@nameuse{timezone#1#2#3}}%
+  \@ifundefined{timezone#1#2#3}
+    {No timezone for `#1#2#3'}
+    {\@nameuse{timezone#1#2#3}}%
 }
 \def\timezone{\expandafter\grabtimezone\pdfcreationdate}% called with \timezone.
 \makeatother
